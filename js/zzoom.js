@@ -1,46 +1,49 @@
 (function( $ ) {
 
-    $.fn.zzoom = function() {
+  $.fn.zzoom = function() {
 
-        
 
-        this.each( function() {
 
-            var $image = $('.zzomIn').find('#zoom');
+    this.each( function() {
 
-            var $circle =  $( "<div></div>");
+      var $image = $('.zzomIn').find('#zoom');
 
-            $image.on({
+      var $circle =  $( "<div></div>");
 
-                mouseenter: function() {
-                    $circle.insertBefore(this);
-                    console.log('hello!');
-                },
-                mouseover: function( event ) {
-                    $circle.css({
-                        top: (event.pageY - 50), 
-                        left: (event.pageX - 50),
-                        position: 'absolute',
-                        'z-index': '1000',
-                        border: '1px solid blue',
-                        width: '100px',
-                        height: '100px',
-                        display: 'block',
-                        'border-radius': '100%'
-                    });
-                    console.log('move!');
-                }
-            });
+      var plus = 0;
 
-            $image.on({
-                mouseleave: function() {
-                    console.log('bye!');
-                }
-            });
+      $image.on({
 
-        });
-
-    }
-    return this;
-
+        mouseenter: function(event) {
+          $circle.insertBefore(this);
+          console.log('hello!');
+          $circle.on({
+            mousemove: function(e) {
+              console.log('dd');
+              $(this).css({
+                top: (e.pageY - 50),
+                left: (e.pageX - 50)
+              });
+            }
+          });
+          plus += 40;
+          $image.css({
+            top: (event.pageY - 50),
+            left: (event.pageX - 50),
+            width: $image.width() + plus,
+            height: $image.height() + plus,
+            display: 'block'
+          });
+        },
+        mouseout: function() {
+          plus = 100;
+          $image.css({
+            width: $image.width() - plus,
+            height: $image.height() - plus,      
+          });
+        }
+      });
+    });
+  }
+  return this;
 }( jQuery ));
