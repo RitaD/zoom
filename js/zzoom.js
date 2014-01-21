@@ -26,20 +26,18 @@
               });
             }
           });
-          plus += 40;
-          $image.css({
+          $image.animate({
             top: (event.pageY - 50),
             left: (event.pageX - 50),
-            width: $image.width() + plus,
-            height: $image.height() + plus,
+            width: $image.width() * 1.2,
+            height: $image.height() * 1.2,
             display: 'block'
           });
         },
         mouseout: function() {
-          plus = 100;
-          $image.css({
-            width: $image.width() - plus,
-            height: $image.height() - plus,      
+          $image.animate({
+            width: $image.width() / 1.2,
+            height: $image.height()  / 1.2,
           });
         }
       });
