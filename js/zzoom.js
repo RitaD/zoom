@@ -6,6 +6,13 @@
       var $circle =  $( "<div></div>");
       var mouseX;
       var mouseY;
+      var $image = $('.zzomIn').find('.zoom');
+      var boxWidth = $(".zzomIn").width();
+      var boxHeight = $(".zzomIn").height();
+
+      $('.zoom')
+        .width(boxWidth)
+        .height(boxHeight);
 
       $('.zzomIn').on({
         mouseenter: function() {
@@ -14,6 +21,7 @@
             height: "200%",
             display: 'block',
             'z-index': 0
+            'z-index': 100
           });
         },
 
@@ -30,12 +38,13 @@
         },
 
         mouseleave: function() {
+          $image
+            .width(boxWidth)
+            .height(boxHeight);
           $image.css({
-            width: "100%",
-            height: "100%",
             top: 0,
             left: 0,
-            'z-index': 100
+            'z-index': 99
           });
         }
       });
