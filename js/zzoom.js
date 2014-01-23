@@ -18,8 +18,8 @@
         },
 
         mousemove: function(e) {
-          var amountMovedX = (e.pageX * -1 / 2);
-          var amountMovedY = (e.pageY * -1 / 2);
+          var amountMovedX = (e.pageX * -5.5 / 6);
+          var amountMovedY = (e.pageY * -5.9 / 6);
           mouseX = e.clientX;
           mouseY = e.clientY;
            $image.css ({
