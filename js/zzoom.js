@@ -17,16 +17,18 @@
         mouseenter: function() {
           $image.attr("src",((imageData)));
            $image.css({
-            width: "200%",
-            height: "200%",
+            width: $image.width() * 2,
+            height: $image.height() * 2,
             display: 'block',
             'z-index': 100
           });
         },
 
         mousemove: function(e) {
-          var amountMovedX = (e.pageX * -5.5 / 6);
-          var amountMovedY = (e.pageY * -5.9 / 6);
+          var offset = $(this).offset();
+          var mouse = {x: e.clientX - offset.left , y: e.clientY - offset.top};
+          var amountMovedX = (mouse.x * -5.8 / 6);
+          var amountMovedY = (mouse.y * -5.8 / 6);
            $image.css ({
             'top' : amountMovedY,
             'left': amountMovedX,
