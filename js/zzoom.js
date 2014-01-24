@@ -34,6 +34,7 @@
             'left': amountMovedX,
             'position' : 'relative'
           });
+
         },
 
         mouseleave: function() {
