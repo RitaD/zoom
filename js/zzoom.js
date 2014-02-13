@@ -3,42 +3,43 @@
   $.fn.zzoom = function() {
     this.each( function() {
       var $image = $('.zzomIn').find('.zoom');
-      var imageSrc = $image.attr('src');
-      var imageData = $image.data('img');
-      var boxWidth = $(".zzomIn").width();
-      var boxHeight = $(".zzomIn").height();
+      var $imageLarge = $('.zzomIn').find('.zoom-plus');
+      var imageH = $image.height();
+      var imageW = $image.width();
+      var boxWidth = $(".zoom").width();
+      var boxHeight = $(".zoom").height();
+      var imageLargeW = $imageLarge.width();
+      var imageLargeH = $imageLarge.height();
 
-      $('.zoom')
+
+      $('.zzomIn')
         .width(boxWidth)
         .height(boxHeight);
 
       $('.zzomIn').on({
 
         mouseenter: function() {
-          $image.attr("src",((imageData)));
-           $image.css({
-            width: $image.width() * 2,
-            height: $image.height() * 2,
-            display: 'block',
-            'z-index': 100
-          });
+          $('.zoom-plus').show();
+          $('.zoom').toggle();
         },
 
         mousemove: function(e) {
-          var offset = $(this).offset();
-          var mouse = {x: e.clientX - offset.left , y: e.clientY - offset.top};
-          var amountMovedX = (mouse.x * -5.8 / 6);
-          var amountMovedY = (mouse.y * -5.8 / 6);
-           $image.css ({
-            'top' : amountMovedY,
-            'left': amountMovedX,
+          var mouseX = e.pageX - $(this).offset().left;
+          var mouseY = e.pageY - $(this).offset().top;
+          var amountMovedX = (Math.round((mouseX/imageW)*100)/100) * (imageLargeW - imageW);
+          var amountMovedY = (Math.round((mouseY/imageH)*100)/100) * (imageLargeH - imageH);
+           $imageLarge.css ({
+            'top' : -amountMovedY + 'px',
+            'left': -amountMovedX + 'px',
             'position' : 'relative'
           });
-
+           
+           
         },
 
         mouseleave: function() {
-          $image.attr("src",((imageSrc)));
+          $('.zoom').toggle();
+          $('.zoom-plus').hide();
           $image
             .width(boxWidth)
             .height(boxHeight);
