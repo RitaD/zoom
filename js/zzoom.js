@@ -2,25 +2,25 @@
 
   $.fn.zzoom = function() {
     this.each( function() {
-      var $image = $('.zzomIn').find('.zoom');
-      var $imageLarge = $('.zzomIn').find('.zoom-plus');
-      var imageH = $image.height();
-      var imageW = $image.width();
+      var $container = $('.zzomIn');
       var boxWidth = $(".zoom").width();
       var boxHeight = $(".zoom").height();
+      var $image = $container.find('.zoom');
+      var $imageClone = $image.clone();
+      var $imageLarge = $imageClone.width(boxWidth * 2);
+      var imageH = $image.height();
+      var imageW = $image.width();
       var imageLargeW = $imageLarge.width();
       var imageLargeH = $imageLarge.height();
-
 
       $('.zzomIn')
         .width(boxWidth)
         .height(boxHeight);
-
+        
       $('.zzomIn').on({
 
         mouseenter: function() {
-          $('.zoom-plus').show();
-          $('.zoom').toggle();
+          $imageLarge.prependTo($container);
         },
 
         mousemove: function(e) {
@@ -33,21 +33,11 @@
             'left': -amountMovedX + 'px',
             'position' : 'relative'
           });
-           
-           
         },
 
         mouseleave: function() {
-          $('.zoom').toggle();
-          $('.zoom-plus').hide();
-          $image
-            .width(boxWidth)
-            .height(boxHeight);
-          $image.css({
-            top: 0,
-            left: 0,
-            'z-index': 99
-          });
+          $imageLarge.remove();
+          $image.show;
         }
       });
     });
