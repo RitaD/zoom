@@ -29,7 +29,7 @@
           var amountMovedX = (Math.round((mouseX/imageW)*100)/100) * (imageLargeW - imageW);
           var amountMovedY = (Math.round((mouseY/imageH)*100)/100) * (imageLargeH - imageH);
            $imageLarge.css ({
-            'top' : -amountMovedY + 'px',
+            'top' : amountMovedY + 'px',
             'left': -amountMovedX + 'px',
             'position' : 'relative'
           });
