@@ -6,8 +6,8 @@
       var $image = $container.find('.zoom');
       var $imageW = $image.width();
       var $imageH = $image.height();
-      var $containerW = $container.width($imageW);
-      var $containerH = $container.height($imageH);
+      var $containerW = $container.innerWidth($imageW);
+      var $containerH = $container.innerHeight($imageH);
       var $imageClone = $image.clone();
       var $imageLarge = $imageClone.width($imageW * 2);
       var imageLargeW = $imageLarge.width();
@@ -20,7 +20,7 @@
       $('.zzomIn').on({
 
         mouseenter: function() {
-          $imageLarge.prependTo($container);
+          $imageLarge.hide().prependTo($container).fadeIn(300);
         },
 
         mousemove: function(e) {
@@ -37,7 +37,6 @@
 
         mouseleave: function() {
           $imageLarge.remove();
-          $image.show;
         }
       });
     });
