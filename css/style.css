@@ -4,27 +4,29 @@
 }
 
 body {
-  background-color: #daedf2;
+  background-color: #393560;
   font-family: 'Viga', sans-serif;
-  color: #50b3cf;
+  color: #f9e4e4;
 }
 
 .container-zoom {
   margin: 100px auto;
-  width: 900px;
+  width: 800px;
 }
 
 .container-zoom h1 {
   text-transform: uppercase;
   font-size: 44px;
   margin: 0 0 30px;
+  color: #f9e4e4;
 }
 
 .zzomIn {
 	overflow: hidden;
-  position: absolute;
+  position: relative;
 	z-index: 100;
-  cursor: pointer;
+  cursor: crosshair;
+  margin: 0px auto;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
